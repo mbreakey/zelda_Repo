@@ -49,6 +49,7 @@
      <Compile Include="Assets\PE_Engine.cs" />
      <Compile Include="Assets\PE_Obj.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\player_movement.cs" />
      <Compile Include="Assets\playerController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
