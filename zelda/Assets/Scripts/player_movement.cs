@@ -47,6 +47,9 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("left_arrow");
 		}
 
+		if (vSpeed == 0 && hSpeed == 0) {
+		}
+
 		this.rigidbody2D.velocity = new Vector2 (hSpeed * Speed, vSpeed * Speed);
 
 
