@@ -18,12 +18,16 @@ public class player_movement : MonoBehaviour {
 		float hSpeed = Input.GetAxis ("Horizontal");
 		float vSpeed = Input.GetAxis ("Vertical");
 
+		Link_animator.SetFloat ("vSpeed", Mathf.Abs (vSpeed));
+		Link_animator.SetFloat ("hSpeed", Mathf.Abs (hSpeed));
+
 		if (hSpeed > 0) {
 			// move right
 			Link_animator.SetTrigger("right_arrow");
 			Link_animator.ResetTrigger("up_arrow");
 			Link_animator.ResetTrigger("down_arrow");
 			Link_animator.ResetTrigger("left_arrow");
+			this.rigidbody2D.velocity = new Vector2 (hSpeed * Speed, 0);
 		}
 		if (vSpeed > 0) {
 			// move up
@@ -31,6 +35,7 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("right_arrow");
 			Link_animator.ResetTrigger("down_arrow");
 			Link_animator.ResetTrigger("left_arrow");
+			this.rigidbody2D.velocity = new Vector2 (0, vSpeed * Speed);
 		}
 		if (hSpeed < 0) {
 			// move left
@@ -38,6 +43,7 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("up_arrow");
 			Link_animator.ResetTrigger("down_arrow");
 			Link_animator.ResetTrigger("right_arrow");
+			this.rigidbody2D.velocity = new Vector2 (hSpeed * Speed, 0);
 		}
 		if (vSpeed < 0) {
 			// move down
@@ -45,12 +51,13 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("right_arrow");
 			Link_animator.ResetTrigger("up_arrow");
 			Link_animator.ResetTrigger("left_arrow");
+			this.rigidbody2D.velocity = new Vector2 (0, vSpeed * Speed);
 		}
 
 		if (vSpeed == 0 && hSpeed == 0) {
+			this.rigidbody2D.velocity = new Vector2 (0, 0);
 		}
 
-		this.rigidbody2D.velocity = new Vector2 (hSpeed * Speed, vSpeed * Speed);
 
 
 		//*************attacking****************\\
