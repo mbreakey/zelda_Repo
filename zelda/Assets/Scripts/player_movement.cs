@@ -2,17 +2,18 @@
 using System.Collections;
 
 public class player_movement : MonoBehaviour {
-
+	private PE_Obj peo;
 	public float Speed = 10.0f;
 	private Animator Link_animator;
 
 	// Use this for initialization
 	void Start () {
 		Link_animator = GetComponent<Animator> ();
+		peo = GetComponent<PE_Obj>();
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		//************ Movement ******************\\
 
 		float hSpeed = Input.GetAxis ("Horizontal");
@@ -27,7 +28,7 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("up_arrow");
 			Link_animator.ResetTrigger("down_arrow");
 			Link_animator.ResetTrigger("left_arrow");
-			this.rigidbody2D.velocity = new Vector2 (hSpeed * Speed, 0);
+			 peo.vel = new Vector2 (hSpeed * Speed, 0);
 		}
 		if (vSpeed > 0) {
 			// move up
@@ -35,7 +36,7 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("right_arrow");
 			Link_animator.ResetTrigger("down_arrow");
 			Link_animator.ResetTrigger("left_arrow");
-			this.rigidbody2D.velocity = new Vector2 (0, vSpeed * Speed);
+			peo.vel = new Vector2 (0, vSpeed * Speed);
 		}
 		if (hSpeed < 0) {
 			// move left
@@ -43,7 +44,7 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("up_arrow");
 			Link_animator.ResetTrigger("down_arrow");
 			Link_animator.ResetTrigger("right_arrow");
-			this.rigidbody2D.velocity = new Vector2 (hSpeed * Speed, 0);
+			peo.vel = new Vector2 (hSpeed * Speed, 0);
 		}
 		if (vSpeed < 0) {
 			// move down
@@ -51,11 +52,11 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("right_arrow");
 			Link_animator.ResetTrigger("up_arrow");
 			Link_animator.ResetTrigger("left_arrow");
-			this.rigidbody2D.velocity = new Vector2 (0, vSpeed * Speed);
+			peo.vel = new Vector2 (0, vSpeed * Speed);
 		}
 
 		if (vSpeed == 0 && hSpeed == 0) {
-			this.rigidbody2D.velocity = new Vector2 (0, 0);
+			peo.vel = new Vector2 (0, 0);
 		}
 
 
@@ -68,12 +69,7 @@ public class player_movement : MonoBehaviour {
 			Link_animator.ResetTrigger("right_arrow");
 			Link_animator.ResetTrigger("up_arrow");
 			Link_animator.ResetTrigger("left_arrow");
-			this.rigidbody2D.velocity = new Vector2 (0, 0);
-
+			peo.vel = new Vector2 (0, 0);
 		}
-
-
-
-
 	}
 }
