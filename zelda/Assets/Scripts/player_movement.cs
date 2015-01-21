@@ -63,6 +63,12 @@ public class player_movement : MonoBehaviour {
 		//*************attacking****************\\
 		if(Input.GetButton("A")) {
 			// attack with sword
+			Link_animator.SetTrigger("A_button");
+			Link_animator.ResetTrigger("down_arrow");
+			Link_animator.ResetTrigger("right_arrow");
+			Link_animator.ResetTrigger("up_arrow");
+			Link_animator.ResetTrigger("left_arrow");
+			this.rigidbody2D.velocity = new Vector2 (0, 0);
 
 		}
 
